@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "974603432903",
+    "project_id": "fluttergdgdemoapp",
+    "storage_bucket": "fluttergdgdemoapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974603432903:android:8fb319b6764eeced7f9fe2",
+        "android_client_info": {
+          "package_name": "com.example.flutter_live_polling_gcp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8RwzVbI89aRmK_1LZRNj3DdVDGTPI0ro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

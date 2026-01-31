@@ -34,9 +34,38 @@ class PollStore {
 
     // --- [START] FIRESTORE (UNCOMMENT FOR WORKSHOP) ---
     // return _db.collection('polls').snapshots().map((snapshot) {
-    //   return snapshot.docs.map((doc) {
+    //   final polls = snapshot.docs.map((doc) {
     //     return PollModel.fromMap(doc.id, doc.data());
     //   }).toList();
+    //   
+    //   // Sort by Created Time (Oldest First)
+    //   // This ensures Q2 comes after Q1 in the pagination
+    //   polls.sort((a, b) {
+    //     // If IDs start with 'local', ignore (handled above)
+    //     // For real Firestore data, we rely on the server timestamp?
+    //     // Actually, let's just use string comparison of IDs if timestamps are missing,
+    //     // or assume timestamps are present.
+    //     return a.id.compareTo(b.id); // Simple ID sort usually works for chronological if auto-ids
+    //     // Better: We should add a 'createdAt' field to PollModel if we want true sorting,
+    //     // but for this workshop, sorting by ID or just taking them as-is is 'good enough'.
+    //     // Let's keep it simple: Just return the list.
+    //   });
+    //   return polls;
+    // });
+    
+    // BETTER VERSION FOR WORKSHOP (Drop-in replacement):
+    // return _db.collection('polls').snapshots().map((snapshot) {
+    //   final docList = snapshot.docs;
+    //   // Client-side sort by created_at field
+    //   docList.sort((a, b) {
+    //     final tA = a.data()['created_at'] as Timestamp?;
+    //     final tB = b.data()['created_at'] as Timestamp?;
+    //     if (tA == null) return 1; 
+    //     if (tB == null) return -1;
+    //     return tA.compareTo(tB); // Oldest First (Ascending)
+    //   });
+    //
+    //   return docList.map((doc) => PollModel.fromMap(doc.id, doc.data())).toList();
     // });
     // --- [END] FIRESTORE ---
   }
